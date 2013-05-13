@@ -16,7 +16,7 @@ namespace SSU
         {
             var request = new RestRequest
                 {
-                    Resource = "api/{LeagueSid}/Sessions/ActiveSessions?json=true"
+                    Resource = "/api/{LeagueSid}/Sessions/ActiveSessions"
                 };
 
             return Execute<List<Session>>(request);

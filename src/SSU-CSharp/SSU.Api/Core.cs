@@ -45,7 +45,7 @@ namespace SSU
         public SSURestClient(string leagueSid, string accountSid, string authToken)
         {
             //BaseUrl = "https://api.sportssignup.com";
-            BaseUrl = "http://localhost/lssapp/";
+            BaseUrl = "http://localhost/lssapp";
             LeagueSid = leagueSid;
             AccountSid = accountSid;
             AuthToken = authToken;

@@ -14,6 +14,8 @@ namespace SSU_Client
             var sessions = client.ListActiveSessions();
 
             Console.Out.WriteLine(sessions.Count);
+            Console.In.ReadLine();
+            Environment.Exit(0);
         }
     }
 }
