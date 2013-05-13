@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Text;
 using RestSharp;
 using RestSharp.Extensions;
@@ -72,8 +73,6 @@ namespace SSU
                         resp.RawBytes = Encoding.UTF8.GetBytes(newJson.ToString());
                     }
                 };
-
-            request.DateFormat = "ddd, dd MMM yyyy HH:mm:ss '+0000'";
 
             var response = client.Execute<T>(request);
             return response.Data;

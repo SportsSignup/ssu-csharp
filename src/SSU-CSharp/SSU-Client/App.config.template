@@ -2,9 +2,9 @@
 <configuration>
 
   <appSettings>
-    <add key="leagueSID" value="29c9ac34-aabb-4c90-9d80-3d446146e469"/>
-    <add key="accountSID" value="0a27f454-6ec7-44d5-aff0-520d47ba80a5"/>
-    <add key="authToken" value="b9051d8e-faf5-4725-8a43-b866304d7f35"/>
+    <add key="leagueSID" value="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"/>
+    <add key="accountSID" value="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"/>
+    <add key="authToken" value="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"/>
   </appSettings>
   
     <startup> 
