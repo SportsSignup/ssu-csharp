@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Globalization;
 using System.Reflection;
 using System.Text;
 using RestSharp;
@@ -11,12 +11,27 @@ namespace SSU
     /// </summary>
     public partial class SSURestClient
     {
+        /// <summary>
+        /// The base url of SSU's api service (https://api.sportssignup.com)
+        /// </summary>
         public string BaseUrl { get; private set; }
 
+
+        /// <summary>
+        /// The League Sid to authenticate with - on Organization Info Page
+        /// </summary>
         public string LeagueSid { get; private set; }
 
+
+        /// <summary>
+        /// The Account Sid of the admin user to authenticate with - on Admin User page.
+        /// </summary>
         public string AccountSid { get; set; }
 
+
+        /// <summary>
+        /// The Auth Token of the admin user to authenticate with - on Admin User page.
+        /// </summary>
         public string AuthToken { get; set; }
 
         private readonly RestClient client;
@@ -58,19 +73,19 @@ namespace SSU
         /// <param name="request">The RestRequest to execute (will use client credentials)</param>
         public virtual T Execute<T>(RestRequest request) where T : new()
         {
-            request.OnBeforeDeserialization = (resp) =>
+            request.OnBeforeDeserialization = resp =>
                 {
                     // for individual resources when there's an error to make
                     // sure that RestException props are populated
                     if (((int) resp.StatusCode) >= 400)
                     {
                         // have to read the bytes so .Content doesn't get populated
-                        string restException = "{{ \"RestException\" : {0} }}";
+                        const string restException = "{{ \"RestException\" : {0} }}";
                         var content = resp.RawBytes.AsString(); //get the response content
                         var newJson = string.Format(restException, content);
 
                         resp.Content = null;
-                        resp.RawBytes = Encoding.UTF8.GetBytes(newJson.ToString());
+                        resp.RawBytes = Encoding.UTF8.GetBytes(newJson.ToString(CultureInfo.InvariantCulture));
                     }
                 };
 

@@ -5,7 +5,7 @@ namespace SSU
     /// <summary>
     /// A session instance resource represents a created registration session. 
     /// </summary>
-    public class Session
+    public class Session : SSUBase
     {
         /// <summary>
         /// The unique id of this session
@@ -30,22 +30,22 @@ namespace SSU
         /// <summary>
         /// The date that registration opens
         /// </summary>
-        public DateTime RegistrationOpenDate { get; set; }
+        public DateTime? RegistrationOpenDate { get; set; }
 
         /// <summary>
         /// The date that registration closes
         /// </summary>
-        public DateTime RegistrationCloseDate { get; set; }
+        public DateTime? RegistrationCloseDate { get; set; }
 
 
         /// <summary>
         /// The date that play starts
         /// </summary>
-        public DateTime PlayOpenDate { get; set; }
+        public DateTime? PlayOpenDate { get; set; }
 
         /// <summary>
         /// The date that play ends for the session
         /// </summary>
-        public DateTime PlayCloseDate { get; set; }
+        public DateTime? PlayCloseDate { get; set; }
     }
 }

@@ -46,7 +46,6 @@
     <Compile Include="Core.cs" />
     <Compile Include="Model\RestException.cs" />
     <Compile Include="Model\Session.cs" />
-    <Compile Include="Model\SessionsResults.cs" />
     <Compile Include="Model\SSUBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sessions.cs" />
