@@ -43,6 +43,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\DataValue.cs" />
     <Compile Include="Model\Registration.cs" />
     <Compile Include="Registrations.cs" />
     <Compile Include="Core.cs" />

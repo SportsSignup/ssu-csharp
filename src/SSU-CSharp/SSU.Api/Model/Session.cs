@@ -36,8 +36,7 @@ namespace SSU
         /// The date that registration closes
         /// </summary>
         public DateTime? RegistrationCloseDate { get; set; }
-
-
+        
         /// <summary>
         /// The date that play starts
         /// </summary>
