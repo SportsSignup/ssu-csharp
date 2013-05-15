@@ -1,6 +1,4 @@
-﻿using SSU.Model;
-
-namespace SSU
+﻿namespace SSU.Model
 {
     public abstract class SSUBase
     {

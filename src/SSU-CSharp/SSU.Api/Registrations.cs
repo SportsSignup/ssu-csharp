@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using RestSharp;
+using SSU.Model;
 
 namespace SSU
 {
@@ -54,6 +55,12 @@ namespace SSU
             return Execute<List<DataValue>>(request);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="registrationId"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public DataValue GetDataValue(int registrationId, string name)
         {
             var request = new RestRequest

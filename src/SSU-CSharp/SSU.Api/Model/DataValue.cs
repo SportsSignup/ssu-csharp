@@ -1,4 +1,4 @@
-﻿namespace SSU
+﻿namespace SSU.Model
 {
     /// <summary>
     /// A Mapping class, wrapping a value to a key name.

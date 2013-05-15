@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SSU
+namespace SSU.Model
 {
     /// <summary>
     /// A session instance resource represents a created registration session. 
@@ -10,7 +10,7 @@ namespace SSU
         /// <summary>
         /// The unique id of this session
         /// </summary>
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         /// <summary>
         /// The name of this session
