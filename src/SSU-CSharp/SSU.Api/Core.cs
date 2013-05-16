@@ -73,6 +73,7 @@ namespace SSU
         /// <param name="request">The RestRequest to execute (will use client credentials)</param>
         public virtual T Execute<T>(RestRequest request) where T : new()
         {
+            request.RequestFormat = DataFormat.Json;
             request.OnBeforeDeserialization = resp =>
                 {
                     // for individual resources when there's an error to make

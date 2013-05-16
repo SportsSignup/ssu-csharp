@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using RestSharp;
+using RestSharp.Validation;
 using SSU.Model;
 
 namespace SSU
@@ -16,7 +17,7 @@ namespace SSU
         {
             var request = new RestRequest
                 {
-                    Resource = "/api/{LeagueSid}/Registrations/ById/{Id}"
+                    Resource = "/api/{LeagueSid}/Registrations/ById/{Id}.json"
                 };
 
             request.AddUrlSegment("Id", registrationId.ToString(CultureInfo.InvariantCulture));
@@ -32,7 +33,7 @@ namespace SSU
         {
             var request = new RestRequest
                 {
-                    Resource = "/api/{LeagueSID}/Registrations/ByTeamId/{Id}"
+                    Resource = "/api/{LeagueSid}/Registrations/ByTeamId/{Id}.json"
                 };
 
             request.AddUrlSegment("Id", teamId.ToString(CultureInfo.InvariantCulture));
@@ -48,7 +49,7 @@ namespace SSU
         {
             var request = new RestRequest
                 {
-                    Resource = "/api/{LeagueSID}/Registrations/Detail/{Id}"
+                    Resource = "/api/{LeagueSid}/Registrations/Detail/{Id}.json"
                 };
 
             request.AddUrlSegment("Id", registrationId.ToString(CultureInfo.InvariantCulture));
@@ -64,12 +65,36 @@ namespace SSU
         public DataValue GetDataValue(int registrationId, string name)
         {
             var request = new RestRequest
-            {
-                Resource = "/api/{LeagueSID}/Registrations/DataValue/{Id}"
-            };
+                {
+                    Resource = "/api/{LeagueSid}/Registrations/DataValue/{Id}.json"
+                };
 
             request.AddUrlSegment("Id", registrationId.ToString(CultureInfo.InvariantCulture));
             request.AddParameter("name", name);
+
+            return Execute<DataValue>(request);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="registrationId"></param>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public DataValue SetDataValue(int registrationId, string name, string value)
+        {
+            Require.Argument("name", name);
+            Require.Argument("value", value);
+
+            var request = new RestRequest(Method.POST)
+                {
+                    Resource = "/api/{LeagueSid}/Registrations/DataValue/{Id}"
+                };
+
+            request.AddUrlSegment("Id", registrationId.ToString(CultureInfo.InvariantCulture));
+            request.AddParameter("name", name);
+            request.AddParameter("value", value);
 
             return Execute<DataValue>(request);
         }

@@ -11,7 +11,7 @@ namespace SSU
         {
             var request = new RestRequest
             {
-                Resource = "/api/{LeagueSid}/Teams/ByDivisionId/{Id}"
+                Resource = "/api/{LeagueSid}/Teams/ByDivisionId/{Id}.json"
             };
 
             request.AddUrlSegment("Id", divisionId.ToString(CultureInfo.InvariantCulture));
