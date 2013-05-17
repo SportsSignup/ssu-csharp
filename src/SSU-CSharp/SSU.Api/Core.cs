@@ -80,7 +80,7 @@ namespace SSU
                     // sure that RestException props are populated
                     if (((int) resp.StatusCode) >= 400)
                     {
-                        // have to read the bytes so .Content doesn't get populated
+                        // have to read the bytes so .Content doesn't get populated 
                         const string restException = "{{ \"RestException\" : {0} }}";
                         var content = resp.RawBytes.AsString(); //get the response content
                         var newJson = string.Format(restException, content);

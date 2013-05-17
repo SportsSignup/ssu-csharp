@@ -17,5 +17,18 @@ namespace SSU
             request.AddUrlSegment("Id", sessionId.ToString(CultureInfo.InvariantCulture));
             return Execute<List<Division>>(request);
         }
+
+        public Team CreateTeamInDivision(int divisionId, string teamName)
+        {
+            var request = new RestRequest(Method.POST)
+                {
+                    Resource = "/api/{LeagueSid}/Divisions/CreateTeam/{Id}"
+                };
+
+            request.AddUrlSegment("Id", divisionId.ToString());
+            request.AddParameter("name", teamName);
+
+            return Execute<Team>(request);
+        }
     }
 }
