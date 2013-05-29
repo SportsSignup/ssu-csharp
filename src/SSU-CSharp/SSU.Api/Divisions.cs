@@ -11,7 +11,7 @@ namespace SSU
         {
             var request = new RestRequest
                 {
-                    Resource = "/api/{LeagueSid}/Divisions/BySessionId/{Id}.json"
+                    Resource = "/{LeagueSid}/Divisions/BySessionId/{Id}"
                 };
 
             request.AddUrlSegment("Id", sessionId.ToString(CultureInfo.InvariantCulture));
@@ -22,7 +22,7 @@ namespace SSU
         {
             var request = new RestRequest(Method.POST)
                 {
-                    Resource = "/api/{LeagueSid}/Divisions/CreateTeam/{Id}"
+                    Resource = "/{LeagueSid}/Divisions/CreateTeam/{Id}"
                 };
 
             request.AddUrlSegment("Id", divisionId.ToString());

@@ -17,7 +17,7 @@ namespace SSU
         {
             var request = new RestRequest
                 {
-                    Resource = "/api/{LeagueSid}/Registrations/ById/{Id}.json"
+                    Resource = "/{LeagueSid}/Registrations/ById/{Id}"
                 };
 
             request.AddUrlSegment("Id", registrationId.ToString(CultureInfo.InvariantCulture));
@@ -33,7 +33,7 @@ namespace SSU
         {
             var request = new RestRequest
                 {
-                    Resource = "/api/{LeagueSid}/Registrations/ByTeamId/{Id}.json"
+                    Resource = "/{LeagueSid}/Registrations/ByTeamId/{Id}"
                 };
 
             request.AddUrlSegment("Id", teamId.ToString(CultureInfo.InvariantCulture));
@@ -49,7 +49,7 @@ namespace SSU
         {
             var request = new RestRequest
                 {
-                    Resource = "/api/{LeagueSid}/Registrations/Detail/{Id}.json"
+                    Resource = "/{LeagueSid}/Registrations/Detail/{Id}"
                 };
 
             request.AddUrlSegment("Id", registrationId.ToString(CultureInfo.InvariantCulture));
@@ -66,7 +66,7 @@ namespace SSU
         {
             var request = new RestRequest
                 {
-                    Resource = "/api/{LeagueSid}/Registrations/DataValue/{Id}.json"
+                    Resource = "/{LeagueSid}/Registrations/DataValue/{Id}"
                 };
 
             request.AddUrlSegment("Id", registrationId.ToString(CultureInfo.InvariantCulture));
@@ -89,7 +89,7 @@ namespace SSU
 
             var request = new RestRequest(Method.POST)
                 {
-                    Resource = "/api/{LeagueSid}/Registrations/DataValue/{Id}"
+                    Resource = "/{LeagueSid}/Registrations/DataValue/{Id}"
                 };
 
             request.AddUrlSegment("Id", registrationId.ToString(CultureInfo.InvariantCulture));

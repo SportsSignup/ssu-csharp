@@ -44,8 +44,7 @@ namespace SSU
         /// <param name="authToken">The Auth Token of the admin user to authenticate with - on Admin User page.</param>
         public SSURestClient(string leagueSid, string accountSid, string authToken)
         {
-            //BaseUrl = "https://api.sportssignup.com";
-            BaseUrl = "http://localhost/lssapp";
+            BaseUrl = "https://api.sportssignup.com";
             LeagueSid = leagueSid;
             AccountSid = accountSid;
             AuthToken = authToken;
