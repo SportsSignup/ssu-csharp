@@ -11,8 +11,8 @@ namespace SSU_Client
                                                ConfigurationManager.AppSettings["accountSID"],
                                                ConfigurationManager.AppSettings["authToken"]);
 
-            // var sessions = client.ListActiveSessions();
-            //Console.Out.WriteLine(sessions.Count);
+            var sessions = client.ListActiveSessions();
+            Console.Out.WriteLine(sessions.Count);
 
 //            var result = client.SetDataValue(5362746, "T-Shirt size", "299157");
 //            Console.Out.WriteLine(result.Value);
@@ -21,8 +21,8 @@ namespace SSU_Client
             //           result = client.SetDataValue(5362746, "Jersey#", "1234");
             //           Console.Out.WriteLine(result.Value);
 
-            var result = client.CreateTeamInDivision(202795, "Go Go Gadget");
-            Console.Out.WriteLine(result.Name);
+//            var result = client.CreateTeamInDivision(202795, "Go Go Gadget");
+//            Console.Out.WriteLine(result.Name);
 
             Console.In.ReadLine();
             Environment.Exit(0);
