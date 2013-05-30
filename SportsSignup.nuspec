@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>SportsSignup</id>
+    <version>0.0.1</version>
+    <description>SportsSignup Rest Api Helper Library</description>
+    <authors>SportsSignup</authors>
+	<language>en-US</language>
+	<projectUrl>https://github.com/SportsSignup/ssu-csharp</projectUrl>
+    <licenseUrl>https://github.com/SportsSignup/ssu-csharp/blob/master/LICENSE.txt</licenseUrl>
+    <iconUrl>https://app1.sportssignup.com/Content/images/ssutiny.gif</iconUrl>
+    <releaseNotes>* 0.0.1 - Initial commit</releaseNotes>
+	<dependencies>
+		<dependency id="RestSharp" />
+	</dependencies>
+    <tags>REST SportsSignup Team Sports Online-Registration</tags>
+  </metadata>
+</package>
