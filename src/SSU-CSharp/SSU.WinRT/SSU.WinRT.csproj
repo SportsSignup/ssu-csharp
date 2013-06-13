@@ -112,8 +112,8 @@
     <Compile Include="Sessions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="RestRT">
-      <HintPath>..\packages\RestRT.0.0.5-alpha\lib\windows8\RestRT.winmd</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\netcore45\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

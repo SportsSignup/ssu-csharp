@@ -1,12 +1,4 @@
-﻿using RestRT;
-using RestRT.Extensions;
-using RestRT.Deserializers;
-using System.Text;
-using System;
-using System.Threading.Tasks;
-using Windows.Foundation;
-using System.Runtime.InteropServices.WindowsRuntime;
-using RestRT.Authenticators;
+﻿using System;
 
 namespace SSU
 {
@@ -38,7 +30,7 @@ namespace SSU
         /// </summary>
         public string AuthToken { get; set; }
 
-        private readonly RestClient client;
+//        private readonly RestClient client;
 
         /// <summary>
         /// Creates a new client with the supplied credentials
@@ -53,74 +45,74 @@ namespace SSU
             AccountSid = accountSid;
             AuthToken = authToken;
 
-            var asmName = GetType().AssemblyQualifiedName;
-            var versionExpression = new System.Text.RegularExpressions.Regex("Version=(?<version>[0-9.]*)");
-            var m = versionExpression.Match(asmName);
-            string version = String.Empty;
-            if (m.Success)
-            {
-                version = m.Groups["version"].Value;
-            }
+            //var asmName = GetType().AssemblyQualifiedName;
+            //var versionExpression = new System.Text.RegularExpressions.Regex("Version=(?<version>[0-9.]*)");
+            //var m = versionExpression.Match(asmName);
+            //string version = String.Empty;
+            //if (m.Success)
+            //{
+            //    version = m.Groups["version"].Value;
+            //}
 
-            client = new RestClient
-                {
-                    UserAgent = "ssu-csharp/" + version,
-                    Authenticator = new HttpBasicAuthenticator(AccountSid, AuthToken),
-                    BaseUrl = BaseUrl
-                };
+            //client = new RestClient
+            //    {
+            //        UserAgent = "ssu-csharp/" + version,
+            //        Authenticator = new HttpBasicAuthenticator(AccountSid, AuthToken),
+            //        BaseUrl = BaseUrl
+            //    };
 
-            client.AddDefaultUrlSegment("LeagueSid", LeagueSid);
+            //client.AddDefaultUrlSegment("LeagueSid", LeagueSid);
         }
 
-        public IAsyncOperation<object> ExecuteAsync(IRestRequest request)
-        {
-            return
-                AsyncInfo.Run(ct => ExecuteAsyncInternal(request));
-        }
+        //public IAsyncOperation<object> ExecuteAsync(IRestRequest request)
+        //{
+        //    return
+        //        AsyncInfo.Run(ct => ExecuteAsyncInternal(request));
+        //}
 
-        private async Task<object> ExecuteAsyncInternal(IRestRequest request)
-        {
-            var result = await client.ExecuteAsync(request);
+        //private async Task<object> ExecuteAsyncInternal(IRestRequest request)
+        //{
+        //    var result = await client.ExecuteAsync(request);
 
-            return result;
-        }
+        //    return result;
+        //}
 
-        /// <summary>
-        /// Execute a manual REST request
-        /// </summary>
-        /// <param name="request">The RestRequest to execute (will use client credentials)</param>
-        /// <param name="type"></param>
-        public IAsyncOperation<object> ExecuteAsync(IRestRequest request, Type type)
-        {
-            return
-                AsyncInfo.Run(ct => ExecuteAsyncInternal(request, type));
-        }
+        ///// <summary>
+        ///// Execute a manual REST request
+        ///// </summary>
+        ///// <param name="request">The RestRequest to execute (will use client credentials)</param>
+        ///// <param name="type"></param>
+        //public IAsyncOperation<object> ExecuteAsync(IRestRequest request, Type type)
+        //{
+        //    return
+        //        AsyncInfo.Run(ct => ExecuteAsyncInternal(request, type));
+        //}
 
-        private async Task<object> ExecuteAsyncInternal(IRestRequest request, Type type)
-        {
-            var result = await client.ExecuteAsync(request);
+        //private async Task<object> ExecuteAsyncInternal(IRestRequest request, Type type)
+        //{
+        //    var result = await client.ExecuteAsync(request);
 
-            if (result.StatusCode >= 400)
-            {
-                // have to read the bytes so .Content doesn't get populated
-                //var content = result.RawBytes.AsString();
-                //var json = JObject.Parse(content);
-                //var newJson = new JObject();
-                //newJson["RestException"] = json;
-                //result.Content = null;
-                //result.RawBytes = Encoding.UTF8.GetBytes(newJson.ToString());
+        //    if (result.StatusCode >= 400)
+        //    {
+        //        // have to read the bytes so .Content doesn't get populated
+        //        //var content = result.RawBytes.AsString();
+        //        //var json = JObject.Parse(content);
+        //        //var newJson = new JObject();
+        //        //newJson["RestException"] = json;
+        //        //result.Content = null;
+        //        //result.RawBytes = Encoding.UTF8.GetBytes(newJson.ToString());
 
-                // have to read the bytes so .Content doesn't get populated
-                const string restException = "{{ \"RestException\" : {0} }}";
-                var content = result.RawBytes.AsString(); //get the response content
-                var newJson = string.Format(restException, content);
+        //        // have to read the bytes so .Content doesn't get populated
+        //        const string restException = "{{ \"RestException\" : {0} }}";
+        //        var content = result.RawBytes.AsString(); //get the response content
+        //        var newJson = string.Format(restException, content);
 
-                result.Content = null;
-                result.RawBytes = Encoding.UTF8.GetBytes(newJson);
-            }
+        //        result.Content = null;
+        //        result.RawBytes = Encoding.UTF8.GetBytes(newJson);
+        //    }
 
-            var deserializer = new JsonDeserializer();
-            return deserializer.Deserialize(result, type);
-        }
+        //    var deserializer = new JsonDeserializer();
+        //    return deserializer.Deserialize(result, type);
+        //}
     }
 }

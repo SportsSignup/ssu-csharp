@@ -5,7 +5,7 @@ namespace SSU.Model
     /// <summary>
     /// 
     /// </summary>
-    public sealed class Registration
+    public sealed class Registration    
     {
         public RestException RestException { get; set; }
 
