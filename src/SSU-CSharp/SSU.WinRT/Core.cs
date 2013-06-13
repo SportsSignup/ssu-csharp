@@ -1,4 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using SSU.Model;
+using Windows.Foundation;
 
 namespace SSU
 {
@@ -30,7 +38,7 @@ namespace SSU
         /// </summary>
         public string AuthToken { get; set; }
 
-//        private readonly RestClient client;
+        private readonly HttpClientHandler handler;
 
         /// <summary>
         /// Creates a new client with the supplied credentials
@@ -40,29 +48,33 @@ namespace SSU
         /// <param name="authToken">The Auth Token of the admin user to authenticate with - on Admin User page.</param>
         public SSURestClient(string leagueSid, string accountSid, string authToken)
         {
-            BaseUrl = "https://api.sportssignup.com";
             LeagueSid = leagueSid;
             AccountSid = accountSid;
             AuthToken = authToken;
+            BaseUrl = "https://api.sportssignup.com" + "/" + leagueSid;
 
-            //var asmName = GetType().AssemblyQualifiedName;
-            //var versionExpression = new System.Text.RegularExpressions.Regex("Version=(?<version>[0-9.]*)");
-            //var m = versionExpression.Match(asmName);
-            //string version = String.Empty;
-            //if (m.Success)
-            //{
-            //    version = m.Groups["version"].Value;
-            //}
-
-            //client = new RestClient
-            //    {
-            //        UserAgent = "ssu-csharp/" + version,
-            //        Authenticator = new HttpBasicAuthenticator(AccountSid, AuthToken),
-            //        BaseUrl = BaseUrl
-            //    };
-
-            //client.AddDefaultUrlSegment("LeagueSid", LeagueSid);
+            handler = new HttpClientHandler
+                {
+                    Credentials = new NetworkCredential(AccountSid, AuthToken)
+                };
         }
+
+        public IAsyncOperation<object> ExecuteAsync(string resource)
+        {
+            return AsyncInfo.Run(ct => ExecuteAsyncInternal(resource));
+        }
+
+        private async Task<object> ExecuteAsyncInternal(string resource)
+        {
+            var url = BaseUrl + resource;
+            var response = await new HttpClient(handler).GetAsync(url);
+            
+            string responseString = await response.Content.ReadAsStringAsync();
+            // parse to json
+            var result = JsonConvert.DeserializeObject(responseString);
+            return result;
+        }
+
 
         //public IAsyncOperation<object> ExecuteAsync(IRestRequest request)
         //{

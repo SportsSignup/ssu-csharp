@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,32 +23,16 @@ namespace SSU
 
         private async Task<IEnumerable<Session>> ListActiveSessionsAsyncInternal()
         {
-            var result = new List<Session>();
+            var url = BaseUrl + "/Sessions/ActiveSessions";
+            var response = await new HttpClient(handler).GetAsync(url);
 
-            using (
-                var handler = new HttpClientHandler
-                    {
-                        Credentials = new NetworkCredential(AccountSid, AuthToken)
-                    })
-            {
-                var resource = BaseUrl + "/{LeagueSid}/Sessions/ActiveSessions";
-                resource = resource.Replace("{LeagueSid}", LeagueSid);
-                var response = await new HttpClient(handler).GetAsync(resource).ConfigureAwait(false);
-
-                string responseString = await response.Content.ReadAsStringAsync();
-                // parse to json
-                result = JsonConvert.DeserializeObject<List<Session>>(responseString);
-            }
-
+            string responseString = await response.Content.ReadAsStringAsync();
+            // parse to json
+            var result = JsonConvert.DeserializeObject(responseString, typeof(IEnumerable<Session>)) as IEnumerable<Session>;
             return result;
 
-            //var request = new RestRequest
-            //    {
-            //        Resource = "/{LeagueSid}/Sessions/ActiveSessions"
-            //    };
-
-            //var result = await ExecuteAsync(request, typeof(IList<Session>));
-            //return (IList<Session>) result;
+            //var result = await ExecuteAsync("/Sessions/ActiveSessions") as List<Session>;
+            //return result;
         }
     }
 }
