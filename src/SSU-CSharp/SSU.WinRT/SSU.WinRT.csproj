@@ -101,10 +101,13 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Model\ISSUObject.cs" />
+    <Compile Include="OrganizationInformations.cs" />
     <Compile Include="Divisions.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Model\DataValue.cs" />
     <Compile Include="Model\Division.cs" />
+    <Compile Include="Model\OrganizationInformation.cs" />
     <Compile Include="Model\Registration.cs" />
     <Compile Include="Model\RestException.cs" />
     <Compile Include="Model\Session.cs" />

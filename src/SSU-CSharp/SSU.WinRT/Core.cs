@@ -59,72 +59,17 @@ namespace SSU
                 };
         }
 
-        public IAsyncOperation<object> ExecuteAsync(string resource)
+        public IAsyncOperation<object> ExecuteAsync(string resource, Type type)
         {
-            return AsyncInfo.Run(ct => ExecuteAsyncInternal(resource));
+            return AsyncInfo.Run(ct => ExecuteAsyncInternal(resource, type));
         }
 
-        private async Task<object> ExecuteAsyncInternal(string resource)
+        private async Task<object> ExecuteAsyncInternal(string resource, Type type)
         {
-            var url = BaseUrl + resource;
-            var response = await new HttpClient(handler).GetAsync(url);
-            
+            var response = await new HttpClient(handler).GetAsync(resource).ConfigureAwait(false);
             string responseString = await response.Content.ReadAsStringAsync();
-            // parse to json
-            var result = JsonConvert.DeserializeObject(responseString);
+            var result = JsonConvert.DeserializeObject(responseString, type);
             return result;
         }
-
-
-        //public IAsyncOperation<object> ExecuteAsync(IRestRequest request)
-        //{
-        //    return
-        //        AsyncInfo.Run(ct => ExecuteAsyncInternal(request));
-        //}
-
-        //private async Task<object> ExecuteAsyncInternal(IRestRequest request)
-        //{
-        //    var result = await client.ExecuteAsync(request);
-
-        //    return result;
-        //}
-
-        ///// <summary>
-        ///// Execute a manual REST request
-        ///// </summary>
-        ///// <param name="request">The RestRequest to execute (will use client credentials)</param>
-        ///// <param name="type"></param>
-        //public IAsyncOperation<object> ExecuteAsync(IRestRequest request, Type type)
-        //{
-        //    return
-        //        AsyncInfo.Run(ct => ExecuteAsyncInternal(request, type));
-        //}
-
-        //private async Task<object> ExecuteAsyncInternal(IRestRequest request, Type type)
-        //{
-        //    var result = await client.ExecuteAsync(request);
-
-        //    if (result.StatusCode >= 400)
-        //    {
-        //        // have to read the bytes so .Content doesn't get populated
-        //        //var content = result.RawBytes.AsString();
-        //        //var json = JObject.Parse(content);
-        //        //var newJson = new JObject();
-        //        //newJson["RestException"] = json;
-        //        //result.Content = null;
-        //        //result.RawBytes = Encoding.UTF8.GetBytes(newJson.ToString());
-
-        //        // have to read the bytes so .Content doesn't get populated
-        //        const string restException = "{{ \"RestException\" : {0} }}";
-        //        var content = result.RawBytes.AsString(); //get the response content
-        //        var newJson = string.Format(restException, content);
-
-        //        result.Content = null;
-        //        result.RawBytes = Encoding.UTF8.GetBytes(newJson);
-        //    }
-
-        //    var deserializer = new JsonDeserializer();
-        //    return deserializer.Deserialize(result, type);
-        //}
     }
 }
