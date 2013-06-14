@@ -15,6 +15,7 @@ namespace SSU
             return AsyncInfo.Run(ct => GetByDivisionIdInteral(divisionId));
         }
 
+
         private async Task<IEnumerable<Team>> GetByDivisionIdInteral(int divisionId)
         {
             var url = BaseUrl + "/Teams/ByDivisionId/{Id}".Replace("{Id}", divisionId.ToString());
