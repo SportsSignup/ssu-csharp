@@ -11,13 +11,24 @@ namespace SSU
     {
         public IAsyncOperation<IEnumerable<Division>> DivisionsBySessionIdAsync(int sessionId)
         {
-            return AsyncInfo.Run(ct => GetBySessionIdInteral(sessionId));
+            return AsyncInfo.Run(ct => GetBySessionIdInternal(sessionId));
         }
 
-        private async Task<IEnumerable<Division>> GetBySessionIdInteral(int sessionId)
+        public IAsyncOperation<Division> GetDivisionAsync(int divisionId)
+        {
+            return AsyncInfo.Run(ct => GetDivisionInternal(divisionId));
+        }
+
+        private async Task<IEnumerable<Division>> GetBySessionIdInternal(int sessionId)
         {
             var url = BaseUrl + "/Divisions/BySessionId/{Id}".Replace("{Id}", sessionId.ToString());
             return await ExecuteAsync(url, typeof (IEnumerable<Division>)) as IEnumerable<Division>;
+        }
+
+        private async Task<Division> GetDivisionInternal(int divisionId)
+        {
+            var url = BaseUrl + "/Divisions/Get/{Id}".Replace("{Id}", divisionId.ToString());
+            return await ExecuteAsync(url, typeof (Division)) as Division;
         }
 
         //public Team CreateTeamInDivision(int divisionId, string teamName)
