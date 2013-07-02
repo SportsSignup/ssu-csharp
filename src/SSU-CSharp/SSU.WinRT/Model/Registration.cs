@@ -58,5 +58,15 @@ namespace SSU.Model
         /// The Last Name of the registrant
         /// </summary>
         public string LastName { get; set; }
+
+        /// <summary>
+        /// The Jersey Number of the registrant
+        /// </summary>
+        public string JerseyNumber { get; set; }
+
+        /// <summary>
+        /// The url of the picture of the registrant
+        /// </summary>
+        public string PlayerImageUrl { get; set; }
     }
 }
