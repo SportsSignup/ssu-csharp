@@ -2,7 +2,7 @@
 <configuration>
 
   <appSettings>
-    <add key="leagueSID" value="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"/>
+    <add key="LeagueSubdomain" value="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"/>
     <add key="accountSID" value="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"/>
     <add key="authToken" value="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"/>
   </appSettings>
