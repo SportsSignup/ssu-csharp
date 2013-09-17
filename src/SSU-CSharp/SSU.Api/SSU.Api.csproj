@@ -52,6 +52,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Games.cs" />
+    <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\Game.cs" />
+    <Compile Include="Model\GameField.cs" />
+    <Compile Include="Model\GameLocation.cs" />
     <Compile Include="Model\RosteredIndividual.cs" />
     <Compile Include="Model\TeamRoster.cs" />
     <Compile Include="Rosters.cs" />
