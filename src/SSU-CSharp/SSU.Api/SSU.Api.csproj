@@ -52,6 +52,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\RosteredIndividual.cs" />
+    <Compile Include="Model\TeamRoster.cs" />
+    <Compile Include="Rosters.cs" />
+    <Compile Include="Model\OrganizationInfo.cs" />
+    <Compile Include="OrganizationInfo.cs" />
     <Compile Include="PublicSessions.cs" />
     <Compile Include="Divisions.cs" />
     <Compile Include="Model\Division.cs" />
