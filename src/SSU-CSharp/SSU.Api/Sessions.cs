@@ -14,7 +14,7 @@ namespace SSU
         {
             var request = new RestRequest
                 {
-                    Resource = "/{LeagueSid}/Sessions/ActiveSessions"
+                    Resource = "/v1/{LeagueSubdomain}/Sessions/ActiveSessions"
                 };
 
             return Execute<List<Session>>(request);

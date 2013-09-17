@@ -11,7 +11,7 @@ namespace SSU
         {
             var request = new RestRequest
             {
-                Resource = "/{LeagueSid}/Teams/ByDivisionId/{Id}"
+                Resource = "/v1/{LeagueSubdomain}/Teams/ByDivisionId/{Id}"
             };
 
             request.AddUrlSegment("Id", divisionId.ToString(CultureInfo.InvariantCulture));

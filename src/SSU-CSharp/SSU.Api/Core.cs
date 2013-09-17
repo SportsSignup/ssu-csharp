@@ -20,7 +20,7 @@ namespace SSU
         /// <summary>
         /// The League Sid to authenticate with - on Organization Info Page
         /// </summary>
-        public string LeagueSid { get; private set; }
+        public string LeagueSubdomain { get; private set; }
 
 
         /// <summary>
@@ -39,13 +39,13 @@ namespace SSU
         /// <summary>
         /// Creates a new client with the supplied credentials
         /// </summary>
-        /// <param name="leagueSid">The League Sid to authenticate with - on Organization Info Page</param>
+        /// <param name="LeagueSubdomain">The League Sid to authenticate with - on Organization Info Page</param>
         /// <param name="accountSid">The Account Sid of the admin user to authenticate with - on Admin User page.</param>
         /// <param name="authToken">The Auth Token of the admin user to authenticate with - on Admin User page.</param>
-        public SSURestClient(string leagueSid, string accountSid, string authToken)
+        public SSURestClient(string leagueSubdomain, string accountSid, string authToken)
         {
             BaseUrl = "https://api.sportssignup.com";
-            LeagueSid = leagueSid;
+            LeagueSubdomain = leagueSubdomain;
             AccountSid = accountSid;
             AuthToken = authToken;
 
@@ -61,7 +61,7 @@ namespace SSU
                     BaseUrl = BaseUrl
                 };
 
-            client.AddDefaultUrlSegment("LeagueSid", LeagueSid);
+            client.AddDefaultUrlSegment("LeagueSubdomain", LeagueSubdomain);
         }
 
 #if FRAMEWORK

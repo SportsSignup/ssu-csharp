@@ -7,7 +7,7 @@ namespace SSU_Client
     {
         private static void Main(string[] args)
         {
-            var client = new SSU.SSURestClient(ConfigurationManager.AppSettings["leagueSID"],
+            var client = new SSU.SSURestClient(ConfigurationManager.AppSettings["leagueSubdomain"],
                                                ConfigurationManager.AppSettings["accountSID"],
                                                ConfigurationManager.AppSettings["authToken"]);
 

@@ -4,7 +4,7 @@ namespace SSU.Api.Tests
 {
     public class Credentials
     {
-        public static string TestLeagueSid
+        public static string TestLeagueSubdomain
         {
             get { return new Guid().ToString(); }
         }

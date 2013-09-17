@@ -7,7 +7,7 @@ namespace SSU.Api.Tests
         [Fact]
         public void ShouldReturnRegistration()
         {
-            var client = new SSURestClient(Credentials.TestLeagueSid, Credentials.TestAccountSid,
+            var client = new SSURestClient(Credentials.TestLeagueSubdomain, Credentials.TestAccountSid,
                                            Credentials.TestAuthToken);
             var result = client.GetByRegistrationId(1);
 
