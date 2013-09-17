@@ -52,6 +52,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PublicSessions.cs" />
     <Compile Include="Divisions.cs" />
     <Compile Include="Model\Division.cs" />
     <Compile Include="Teams.cs" />

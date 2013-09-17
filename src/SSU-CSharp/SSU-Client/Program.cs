@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Linq;
 
 namespace SSU_Client
 {
@@ -13,6 +14,13 @@ namespace SSU_Client
 
             var sessions = client.ListActiveSessions();
             Console.Out.WriteLine(sessions.Count);
+
+            sessions = client.GetPublicSessions();
+            Console.Out.WriteLine(sessions.Count);
+
+            var teams = client.TeamsBySessionId(sessions.First().Id.Value);
+            Console.Out.WriteLine(teams.First().Name);
+
 
 //            var result = client.SetDataValue(5362746, "T-Shirt size", "299157");
 //            Console.Out.WriteLine(result.Value);
