@@ -2,14 +2,16 @@
 <package >
   <metadata>
     <id>SportsSignup</id>
-    <version>0.0.2</version>
+	<title>SportsSignup Rest API Helper</title>
+    <version>0.1</version>
     <description>SportsSignup Rest Api Helper Library</description>
     <authors>SportsSignup</authors>
 	<language>en-US</language>
 	<projectUrl>https://github.com/SportsSignup/ssu-csharp</projectUrl>
     <licenseUrl>https://github.com/SportsSignup/ssu-csharp/blob/master/LICENSE.txt</licenseUrl>
-    <iconUrl>https://app1.sportssignup.com/Content/images/ssutiny.gif</iconUrl>
+    <iconUrl>https://app1.sportssignup.com/Content/images/ssu_favicon_normal.jpg</iconUrl>
     <releaseNotes>
+		* 0.1 - first public release
 		* 0.0.2 - release with firmed up paths
 		* 0.0.1 - Initial commit
 	</releaseNotes>

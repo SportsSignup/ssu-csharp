@@ -108,3 +108,5 @@ Backup*/
 UpgradeLog*.XML
 
 src/SSU-CSharp/SSU-Client/App.config
+
+download/
