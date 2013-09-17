@@ -7,7 +7,18 @@ namespace SSU
 {
     public partial class SSURestClient
     {
-        public List<Division> GetBySessionId(int sessionId)
+        public Division GetByDivisionId(int id)
+        {
+            var request = new RestRequest
+            {
+                Resource = "/v1/{LeagueSubdomain}/Divisions/Get/{Id}"
+            };
+
+            request.AddUrlSegment("Id", id.ToString(CultureInfo.InvariantCulture));
+            return Execute<Division>(request);            
+        }
+
+        public List<Division> DivisionsBySessionId(int sessionId)
         {
             var request = new RestRequest
                 {

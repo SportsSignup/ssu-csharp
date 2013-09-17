@@ -29,7 +29,7 @@ namespace SSU
         /// </summary>
         /// <param name="teamId">The id of the team to query for</param>
         /// <returns></returns>
-        public IList<Registration> GetByTeamId(int teamId)
+        public IList<Registration> RegistrationsByTeamId(int teamId)
         {
             var request = new RestRequest
                 {

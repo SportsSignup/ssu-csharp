@@ -7,7 +7,7 @@ namespace SSU
 {
     public partial class SSURestClient
     {
-        public List<Team> GetByDivisionId(int divisionId)
+        public List<Team> TeamsByDivisionId(int divisionId)
         {
             var request = new RestRequest
             {
