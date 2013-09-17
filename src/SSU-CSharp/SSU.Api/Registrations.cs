@@ -25,27 +25,11 @@ namespace SSU
         }
 
         /// <summary>
-        /// Gets a list of registrations on a team
-        /// </summary>
-        /// <param name="teamId">The id of the team to query for</param>
-        /// <returns></returns>
-        public IList<Registration> RegistrationsByTeamId(int teamId)
-        {
-            var request = new RestRequest
-                {
-                    Resource = "/v1/{LeagueSubdomain}/Registrations/ByTeamId/{Id}"
-                };
-
-            request.AddUrlSegment("Id", teamId.ToString(CultureInfo.InvariantCulture));
-            return Execute<List<Registration>>(request);
-        }
-
-        /// <summary>
         /// Gets a list of all of the DataValue mappings of the properties on the registration, including custom fields and object properties.
         /// </summary>
         /// <param name="registrationId">The registration to look up.</param>
         /// <returns></returns>
-        public IList<DataValue> GetDetail(int registrationId)
+        public IList<DataValue> Detail(int registrationId)
         {
             var request = new RestRequest
                 {
@@ -97,6 +81,55 @@ namespace SSU
             request.AddParameter("value", value);
 
             return Execute<DataValue>(request);
+        }
+
+
+        /// <summary>
+        /// Gets a list of registrations on a session
+        /// </summary>
+        /// <param name="sessionId">The id of the session to query for</param>
+        /// <returns></returns>
+        public IList<Registration> RegistrationsBySessionId(int sessionId)
+        {
+            var request = new RestRequest
+            {
+                Resource = "/v1/{LeagueSubdomain}/Registrations/BySessionId/{Id}"
+            };
+
+            request.AddUrlSegment("Id", sessionId.ToString(CultureInfo.InvariantCulture));
+            return Execute<List<Registration>>(request);            
+        }
+
+        /// <summary>
+        /// Gets a list of registrations on a division
+        /// </summary>
+        /// <param name="divisionId">The id of the division to query for</param>
+        /// <returns></returns>
+        public IList<Registration> RegistrationsByDivisionId(int divisionId)
+        {
+            var request = new RestRequest
+            {
+                Resource = "/v1/{LeagueSubdomain}/Registrations/ByDivisionId/{Id}"
+            };
+
+            request.AddUrlSegment("Id", divisionId.ToString(CultureInfo.InvariantCulture));
+            return Execute<List<Registration>>(request);
+        }
+
+        /// <summary>
+        /// Gets a list of registrations on a team
+        /// </summary>
+        /// <param name="teamId">The id of the team to query for</param>
+        /// <returns></returns>
+        public IList<Registration> RegistrationsByTeamId(int teamId)
+        {
+            var request = new RestRequest
+            {
+                Resource = "/v1/{LeagueSubdomain}/Registrations/ByTeamId/{Id}"
+            };
+
+            request.AddUrlSegment("Id", teamId.ToString(CultureInfo.InvariantCulture));
+            return Execute<List<Registration>>(request);
         }
     }
 }
